@@ -87,3 +87,35 @@ color:#fff;
 .card p{
 color:#ddd;
 }
+.search-box{
+display:flex;
+justify-content:center;
+margin:25px;
+gap:10px;
+}
+
+.search-box input{
+width:60%;
+max-width:500px;
+padding:14px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+.search-box button{
+padding:14px 25px;
+background:#00bfff;
+color:white;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.ticker{
+background:#d90429;
+color:white;
+padding:12px;
+font-weight:bold;
+}
