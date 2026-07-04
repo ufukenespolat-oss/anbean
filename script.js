@@ -1,33 +1,36 @@
-async function getRates() {
+const API_KEY = "apikey YENI_API_KEY_BURAYA";
 
-try {
+async function getData() {
+  try {
+    const response = await fetch("https://api.collectapi.com/economy/allCurrency", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        "authorization": API_KEY
+      }
+    });
 
-const res = await fetch("https://open.er-api.com/v6/latest/USD");
-const data = await res.json();
+    const data = await response.json();
 
-const usd = data.rates.TRY;
-const eur = (data.rates.TRY / data.rates.EUR);
+    const usd = data.result.find(x => x.code === "USD");
+    const eur = data.result.find(x => x.code === "EUR");
 
-document.getElementById("usd-price").innerHTML =
-"₺" + usd.toFixed(2);
+    if (usd) {
+      document.getElementById("usd-price").innerHTML = usd.buying + " ₺";
+    }
 
-document.getElementById("eur-price").innerHTML =
-"₺" + eur.toFixed(2);
+    if (eur) {
+      document.getElementById("eur-price").innerHTML = eur.buying + " ₺";
+    }
 
-// Şimdilik yaklaşık hesap
-document.getElementById("gold-price").innerHTML =
-"Canlı API";
+    // Şimdilik örnek gram altın.
+    // Bir sonraki adımda gerçek gram altın API'sini bağlayacağız.
+    document.getElementById("gold-price").innerHTML = "Canlı API bağlanacak";
 
-document.getElementById("weather").innerHTML =
-"Yakında";
-
+  } catch (e) {
+    console.log(e);
+  }
 }
-catch(e){
 
-console.log(e);
-
-}
-
-}
-
-getRates();
+getData();
+setInterval(getData, 60000);
