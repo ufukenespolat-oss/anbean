@@ -221,3 +221,57 @@ text-align:center;
 margin-top:40px;
 color:#888;
 }
+/* ===== CANLI VERİLER ===== */
+
+.live-data{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:20px;
+padding:30px 20px;
+}
+
+.live-box{
+background:#16213e;
+border-radius:18px;
+padding:20px;
+text-align:center;
+transition:.3s;
+box-shadow:0 8px 25px rgba(0,0,0,.35);
+}
+
+.live-box:hover{
+transform:translateY(-8px);
+}
+
+.live-box h3{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.live-box p{
+font-size:26px;
+font-weight:bold;
+color:#19b5fe;
+margin:10px 0;
+}
+
+.live-box span{
+color:#bdbdbd;
+font-size:14px;
+}
+
+.gold{
+border-top:4px solid gold;
+}
+
+.usd{
+border-top:4px solid #00c853;
+}
+
+.eur{
+border-top:4px solid #2196f3;
+}
+
+.weather{
+border-top:4px solid orange;
+}
