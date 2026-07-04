@@ -11,7 +11,8 @@ async function getData() {
     });
 
     const data = await response.json();
-    console.log(data);
+    document.getElementById("gold-price").innerHTML =
+JSON.stringify(data.result);;
 
     const usd = data.result.find(item => item.code === "USD");
     const eur = data.result.find(item => item.code === "EUR");
