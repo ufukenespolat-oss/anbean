@@ -190,3 +190,34 @@ border-radius:10px;
 text-decoration:none;
 font-weight:bold;
 }
+footer{
+background:#08101d;
+margin-top:60px;
+padding:50px 30px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.footer-grid h3{
+color:#00d4ff;
+}
+
+.footer-grid ul{
+list-style:none;
+padding:0;
+}
+
+.footer-grid li{
+margin:10px 0;
+color:#ccc;
+}
+
+.copyright{
+text-align:center;
+margin-top:40px;
+color:#888;
+}
