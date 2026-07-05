@@ -10,10 +10,13 @@ data = r.json()
 
 rates = data["rates"]
 
+# 1 gram altın = 1 ons / 31.1034768
+gram_altin = (1 / rates["XAU"]) / 31.1034768
+
 output = {
     "usd": round(1 / rates["USD"], 2),
     "eur": round(1 / rates["EUR"], 2),
-    "gold": round(31.1035 / rates["XAU"], 2)
+    "gold": round(gram_altin, 2)
 }
 
 with open("data.json", "w", encoding="utf-8") as f:
