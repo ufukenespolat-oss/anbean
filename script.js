@@ -6,25 +6,14 @@ async function loadData() {
         const response = await fetch(API_URL + "?t=" + Date.now());
         const data = await response.json();
 
-        // Döviz
         document.getElementById("usd-price").textContent =
             data.usd + " ₺";
 
         document.getElementById("eur-price").textContent =
             data.eur + " ₺";
 
-        // Gram Altın
         document.getElementById("gold-price").textContent =
-            data.gold + " ₺";
-
-        // Şimdilik API'de yok
-        const quarter = document.getElementById("quarter-price");
-        const half = document.getElementById("half-price");
-        const full = document.getElementById("full-price");
-
-        if (quarter) quarter.textContent = "Yakında";
-        if (half) half.textContent = "Yakında";
-        if (full) full.textContent = "Yakında";
+            data.gold.toLocaleString("tr-TR") + " ₺";
 
         // Hava Durumu
         const weatherResponse = await fetch(
@@ -39,17 +28,11 @@ async function loadData() {
     } catch (err) {
         console.error(err);
 
-        [
-            "gold-price",
-            "usd-price",
-            "eur-price",
-            "weather"
-        ].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = "--";
+        ["gold-price","usd-price","eur-price","weather"].forEach(id=>{
+            document.getElementById(id).textContent="--";
         });
     }
 }
 
 loadData();
-setInterval(loadData, 60000);
+setInterval(loadData,60000);
