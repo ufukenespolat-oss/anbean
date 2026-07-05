@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ANBEAN Haber</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+max-width:900px;
+margin:auto;
+padding:20px;
+font-family:Arial,sans-serif;
+}
+
+img{
+width:100%;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+h1{
+margin-bottom:10px;
+}
+
+.summary{
+font-size:18px;
+line-height:1.8;
+}
+
+a.button{
+display:inline-block;
+padding:12px 20px;
+background:#c00;
+color:white;
+text-decoration:none;
+border-radius:8px;
+margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<img id="image">
+
+<h1 id="title"></h1>
+
+<p id="date"></p>
+
+<div class="summary" id="summary"></div>
+
+<a id="source" class="button" target="_blank">
+Kaynağında Oku
+</a>
+
+<script>
+
+const params=new URLSearchParams(location.search);
+
+const id=params.get("id");
+
+fetch("news.json")
+.then(r=>r.json())
+.then(news=>{
+
+const item=news[id];
+
+document.getElementById("title").textContent=item.title;
+
+document.getElementById("summary").textContent=item.summary;
+
+document.getElementById("date").textContent=item.published;
+
+if(item.image){
+
+document.getElementById("image").src=item.image;
+
+}
+
+document.getElementById("source").href=item.link;
+
+});
+
+</script>
+
+</body>
+</html>
