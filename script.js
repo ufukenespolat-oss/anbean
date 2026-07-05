@@ -54,7 +54,7 @@ async function loadData() {
         });
     }
 
-    // Hava durumu ayrı çalışsın
+    // Hava Durumu
     try {
         const weatherResponse = await fetch(
             "https://api.open-meteo.com/v1/forecast?latitude=38.42&longitude=27.14&current=temperature_2m"
@@ -67,3 +67,40 @@ async function loadData() {
 
     } catch (err) {
         console.error("Hava Durumu Hatası:", err);
+
+        const weather = document.getElementById("weather");
+        if (weather) weather.textContent = "--";
+    }
+}
+
+// Haberler
+async function loadNews() {
+    try {
+        const response = await fetch("./news.json?t=" + Date.now());
+        const news = await response.json();
+
+        const container = document.getElementById("news-list");
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        news.slice(0, 10).forEach(item => {
+            container.innerHTML += `
+                <div class="news-item">
+                    <h3>${item.title}</h3>
+                    <p>${item.summary}</p>
+                    <a href="${item.link}" target="_blank">Haberi Oku →</a>
+                </div>
+            `;
+        });
+
+    } catch (err) {
+        console.error("Haber Hatası:", err);
+    }
+}
+
+loadData();
+loadNews();
+
+setInterval(loadData, 60000);
+setInterval(loadNews, 600000);
