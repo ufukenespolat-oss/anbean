@@ -1,49 +1,25 @@
 import requests
-import feedparser
 import json
-from bs4 import BeautifulSoup
 
-RSS_FEEDS = [
-    "https://www.trthaber.com/rss/manset.rss",
-    "https://www.ntv.com.tr/son-dakika.rss",
-]
+url = "https://api.rss2json.com/v1/api.json?rss_url=https://www.aa.com.tr/tr/rss/default?cat=guncel"
 
-haberler = []
+try:
+    r = requests.get(url, timeout=20)
+    data = r.json()
 
-for rss in RSS_FEEDS:
-    try:
-        feed = feedparser.parse(rss)
+    news = []
 
-        for item in feed.entries[:5]:
+    for item in data["items"][:10]:
+        news.append({
+            "title": item["title"],
+            "link": item["link"],
+            "image": item.get("thumbnail", "")
+        })
 
-            aciklama = ""
+    with open("news.json", "w", encoding="utf-8") as f:
+        json.dump(news, f, ensure_ascii=False, indent=2)
 
-            if "summary" in item:
-                aciklama = BeautifulSoup(
-                    item.summary,
-                    "html.parser"
-                ).get_text()
+    print("Haberler güncellendi.")
 
-            haberler.append({
-                "title": item.title,
-                "link": item.link,
-                "summary": aciklama,
-                "published": item.get("published", "")
-            })
-
-    except Exception as e:
-        print(e)
-
-with open(
-    "news.json",
-    "w",
-    encoding="utf-8"
-) as f:
-    json.dump(
-        haberler,
-        f,
-        ensure_ascii=False,
-        indent=2
-    )
-
-print("News updated.")
+except Exception as e:
+    print(e)
