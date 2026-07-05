@@ -13,10 +13,10 @@ rates = data["rates"]
 usd = round(1 / rates["USD"], 2)
 eur = round(1 / rates["EUR"], 2)
 
-# Gram altın (yaklaşık)
-gram_altin = round((1 / rates["XAU"]) / 31.1035, 2)
+# 1 ons = 31.1034768 gram
+gram_altin = round((1 / rates["XAU"]) / 31.1034768, 2)
 
-# Diğer altın türleri (yaklaşık hesaplama)
+# Yaklaşık piyasa katsayıları
 ceyrek_altin = round(gram_altin * 1.754, 2)
 yarim_altin = round(gram_altin * 3.508, 2)
 tam_altin = round(gram_altin * 7.016, 2)
