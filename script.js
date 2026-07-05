@@ -6,37 +6,32 @@ async function loadData() {
 
         const response = await fetch(API_URL + "?t=" + Date.now());
 
+        if (!response.ok) throw new Error("data.json okunamadı");
+
         const data = await response.json();
 
-        document.getElementById("gold-price").textContent =
-            Number(data.gram).toLocaleString("tr-TR") + " ₺";
+        const setValue = (id, value) => {
+            const el = document.getElementById(id);
+            if (el && value !== undefined && value !== null) {
+                el.textContent = Number(value).toLocaleString("tr-TR") + " ₺";
+            }
+        };
 
-        document.getElementById("quarter-price").textContent =
-            Number(data.quarter).toLocaleString("tr-TR") + " ₺";
+        setValue("gold-price", data.gram);
+        setValue("quarter-price", data.quarter);
+        setValue("half-price", data.half);
+        setValue("full-price", data.full);
+        setValue("cumhuriyet-price", data.cumhuriyet);
+        setValue("usd-price", data.usd);
+        setValue("eur-price", data.eur);
 
-        document.getElementById("half-price").textContent =
-            Number(data.half).toLocaleString("tr-TR") + " ₺";
+    } catch (err) {
 
-        document.getElementById("full-price").textContent =
-            Number(data.full).toLocaleString("tr-TR") + " ₺";
-
-        document.getElementById("cumhuriyet-price").textContent =
-            Number(data.cumhuriyet).toLocaleString("tr-TR") + " ₺";
-
-        document.getElementById("usd-price").textContent =
-            Number(data.usd).toLocaleString("tr-TR") + " ₺";
-
-        document.getElementById("eur-price").textContent =
-            Number(data.eur).toLocaleString("tr-TR") + " ₺";
-
-    } catch(err){
-
-        console.log(err);
+        console.error(err);
 
     }
 
 }
-// HAVA DURUMU
 
 async function loadWeather(){
 
@@ -53,17 +48,11 @@ async function loadWeather(){
 
     }catch(err){
 
-        console.log(err);
-
-        document.getElementById("weather").textContent="--";
+        console.error(err);
 
     }
 
 }
-
-
-
-// HABERLER
 
 async function loadNews(){
 
@@ -73,14 +62,15 @@ async function loadNews(){
 
         const news = await response.json();
 
-        const container=document.getElementById("news-list");
+        const container = document.getElementById("news-list");
 
-        container.innerHTML="";
+        if(!container) return;
+
+        container.innerHTML = "";
 
         news.slice(0,10).forEach((item,index)=>{
 
-            container.innerHTML+=`
-
+            container.innerHTML += `
             <div class="news-item">
 
                 ${item.image ? `<img src="${item.image}" class="news-image">` : ""}
@@ -89,21 +79,32 @@ async function loadNews(){
 
                 <p>${item.summary}</p>
 
-                <a class="news-button"
-                href="haber.html?id=${index}">
-                Haberi Oku →
+                <div class="news-date">${item.published || ""}</div>
+
+                <a class="news-button" href="haber.html?id=${index}">
+                    Haberi Oku →
                 </a>
 
             </div>
-
             `;
 
         });
 
+    }catch(err){
+
+        console.error(err);
+
     }
 
-    catch(err){
+}
 
+loadData();
+loadWeather();
+loadNews();
+
+setInterval(loadData,60000);
+setInterval(loadWeather,600000);
+setInterval(loadNews,600000);
         console.log(err);
 
     }
