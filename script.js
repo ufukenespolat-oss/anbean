@@ -1,3 +1,4 @@
+alert("Script çalıştı");
 const API_URL = "./data.json";
 
 async function loadData() {
