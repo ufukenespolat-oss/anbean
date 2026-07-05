@@ -17,10 +17,14 @@ async function loadData() {
         document.getElementById("gold-price").textContent =
             data.gold + " ₺";
 
-        // Şimdilik MetalPriceAPI bunları vermiyor
-        document.getElementById("quarter-price").textContent = "Yakında";
-        document.getElementById("half-price").textContent = "Yakında";
-        document.getElementById("full-price").textContent = "Yakında";
+        // Şimdilik API'de yok
+        const quarter = document.getElementById("quarter-price");
+        const half = document.getElementById("half-price");
+        const full = document.getElementById("full-price");
+
+        if (quarter) quarter.textContent = "Yakında";
+        if (half) half.textContent = "Yakında";
+        if (full) full.textContent = "Yakında";
 
         // Hava Durumu
         const weatherResponse = await fetch(
@@ -37,9 +41,6 @@ async function loadData() {
 
         [
             "gold-price",
-            "quarter-price",
-            "half-price",
-            "full-price",
             "usd-price",
             "eur-price",
             "weather"
