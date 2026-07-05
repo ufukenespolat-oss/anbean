@@ -1,96 +1,132 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ANBEAN - Hayatın Nabzı</title>
+
+<title>ANBEAN | Hayatın Nabzı</title>
+
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <header>
-    <div class="logo">ANBEAN</div>
-    <div class="slogan">Hayatın Nabzı</div>
 
-    <nav>
-        <a href="#">🏠 Ana Sayfa</a>
-        <a href="#">📰 Haberler</a>
-        <a href="#">💰 Altın</a>
-        <a href="#">💵 Döviz</a>
-        <a href="#">🌦️ Hava</a>
-        <a href="#">⚽ Spor</a>
-        <a href="#">🙏 Namaz</a>
-    </nav>
+<div class="logo">
+<span class="logo-a">A</span>NBEAN
+</div>
+
+<div class="slogan">
+Hayatın Nabzı
+</div>
+
+<nav>
+
+<a href="#">🏠 Ana Sayfa</a>
+<a href="#">📰 Haberler</a>
+<a href="#">💰 Altın</a>
+<a href="#">💵 Döviz</a>
+<a href="#">🌤 Hava</a>
+<a href="#">⚽ Spor</a>
+<a href="#">🙏 Namaz</a>
+
+</nav>
+
 </header>
 
 <div class="search-box">
-    <input type="text" placeholder="ANBEAN'de Ara...">
-    <button>Ara</button>
+
+<input type="text" placeholder="ANBEAN'de Ara...">
+
+<button>Ara</button>
+
 </div>
 
 <div class="ticker">
+
 <marquee>
+
 🔴 SON DAKİKA • Altın • Döviz • Haberler • Spor • Depremler • Kamu İlanları • Namaz Vakitleri
+
 </marquee>
+
 </div>
 
 <section class="hero">
+
 <h1>Türkiye'nin Yeni Yaşam Portalı</h1>
-<p>Altın, Döviz, Haber, Spor, Deprem, Kamu İlanları ve daha fazlası.</p>
+
+<p>Altın, Döviz, Haber, Spor, Deprem ve çok daha fazlası.</p>
+
 </section>
 
 <section class="live-data">
 
-<div class="live-box">
+<div class="live-box gold">
 <h3>🥇 Gram Altın</h3>
 <p id="gold-price">Yükleniyor...</p>
+<span>Canlı Fiyat</span>
 </div>
 
-<div class="live-box">
+<div class="live-box gold">
 <h3>🪙 Çeyrek Altın</h3>
 <p id="quarter-price">Yükleniyor...</p>
+<span>Canlı Fiyat</span>
 </div>
 
-<div class="live-box">
+<div class="live-box gold">
 <h3>🪙 Yarım Altın</h3>
 <p id="half-price">Yükleniyor...</p>
+<span>Canlı Fiyat</span>
 </div>
 
-<div class="live-box">
+<div class="live-box gold">
 <h3>👑 Tam Altın</h3>
 <p id="full-price">Yükleniyor...</p>
+<span>Canlı Fiyat</span>
 </div>
 
-<div class="live-box">
+<div class="live-box gold">
 <h3>🏆 Cumhuriyet Altını</h3>
 <p id="cumhuriyet-price">Yükleniyor...</p>
+<span>Canlı Fiyat</span>
 </div>
 
-<div class="live-box">
+<div class="live-box usd">
 <h3>💵 Dolar</h3>
 <p id="usd-price">Yükleniyor...</p>
+<span>USD / TRY</span>
 </div>
 
-<div class="live-box">
+<div class="live-box eur">
 <h3>💶 Euro</h3>
 <p id="eur-price">Yükleniyor...</p>
+<span>EUR / TRY</span>
 </div>
 
-<div class="live-box">
+<div class="live-box weather">
 <h3>🌤 Hava Durumu</h3>
 <p id="weather">Yükleniyor...</p>
+<span>Bulunduğun Şehir</span>
 </div>
 
 </section>
 
 <section class="top-news">
 
-<h2>📰 SON DAKİKA HABERLERİ</h2>
+<div class="news-content">
+
+<h2>📰 Son Dakika Haberleri</h2>
 
 <div id="news-list">
 
 <p>Haberler yükleniyor...</p>
+
+</div>
 
 </div>
 
@@ -99,11 +135,32 @@
 <div class="grid">
 
 <div class="card">
-<h2>💰 Altın & Döviz</h2>
-<p>Canlı altın ve döviz kurları.</p>
+<h2>🌍 Depremler</h2>
+<p>AFAD ve Kandilli son depremler.</p>
 </div>
 
 <div class="card">
+<h2>⚽ Spor</h2>
+<p>Futbol ve spor haberleri.</p>
+</div>
+
+<div class="card">
+<h2>📢 Kamu İlanları</h2>
+<p>KPSS ve memur alımları.</p>
+</div>
+
+<div class="card">
+<h2>🕌 Namaz Vakitleri</h2>
+<p>Tüm şehirlerin namaz vakitleri.</p>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html><div class="card">
 <h2>🌍 Depremler</h2>
 <p>AFAD ve Kandilli son depremler.</p>
 </div>
